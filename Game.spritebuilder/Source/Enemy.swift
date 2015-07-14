@@ -10,12 +10,10 @@ import Foundation
 
 class Enemy: CCSprite {
     
-    private var moveSpeed : CGFloat = 50
-    
+    var moveSpeed : CGFloat = 50
     var width = CCDirector.sharedDirector().viewSize().width
-    
-    var xSpawnCoord: Int!
-    var randomSide: Int {
+    var xSpawnCoord: CGFloat!
+    var randomSide: Int! {
         didSet {
             if randomSide == 0 {
                 xSpawnCoord = 0.2 * width
@@ -27,9 +25,10 @@ class Enemy: CCSprite {
     }
     
     func didLoadFromCCB(){
-        schedule("moveDown", interval: 1)
-        //if randomnumber is less than half,{
-        //position
+        scale = 3.0
+        schedule("moveDown", interval: 0.8)
+        randomSide = Int(arc4random_uniform(2))
+        position.x = xSpawnCoord
     }
     
     
@@ -40,6 +39,5 @@ class Enemy: CCSprite {
     
     func moveDown(){
         positionInPoints = ccp(positionInPoints.x, positionInPoints.y - moveSpeed)
-//        println(arc4random_uniform(2))
     }
 }
