@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>13</integer>
+	<integer>10</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -18,7 +18,7 @@
 	<key>currentSequenceId</key>
 	<integer>0</integer>
 	<key>docDimensionsType</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -41,7 +41,7 @@
 		<array>
 			<dict>
 				<key>UUID</key>
-				<integer>12</integer>
+				<integer>1</integer>
 				<key>baseClass</key>
 				<string>CCNodeColor</string>
 				<key>children</key>
@@ -555,7 +555,7 @@ Over</string>
 			</dict>
 			<dict>
 				<key>UUID</key>
-				<integer>6</integer>
+				<integer>4</integer>
 				<key>animatedProperties</key>
 				<dict>
 					<key>0</key>
@@ -801,7 +801,7 @@ Over</string>
 			</dict>
 			<dict>
 				<key>UUID</key>
-				<integer>7</integer>
+				<integer>5</integer>
 				<key>baseClass</key>
 				<string>CCLabelTTF</string>
 				<key>children</key>
@@ -1008,7 +1008,7 @@ Over</string>
 			</dict>
 			<dict>
 				<key>UUID</key>
-				<integer>8</integer>
+				<integer>6</integer>
 				<key>baseClass</key>
 				<string>CCLabelTTF</string>
 				<key>children</key>
@@ -1223,7 +1223,7 @@ Over</string>
 			</dict>
 			<dict>
 				<key>UUID</key>
-				<integer>9</integer>
+				<integer>7</integer>
 				<key>baseClass</key>
 				<string>CCButton</string>
 				<key>children</key>
@@ -1291,7 +1291,7 @@ Over</string>
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string></string>
+							<string>restart</string>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -1549,7 +1549,7 @@ Over</string>
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string></string>
+		<string>GameOver</string>
 		<key>displayName</key>
 		<string>CCNode</string>
 		<key>memberVarAssignmentName</key>
@@ -1587,10 +1587,10 @@ Over</string>
 				<string>Size</string>
 				<key>value</key>
 				<array>
-					<real>320</real>
-					<real>568</real>
-					<integer>0</integer>
-					<integer>0</integer>
+					<real>1</real>
+					<real>1</real>
+					<integer>2</integer>
+					<integer>2</integer>
 				</array>
 			</dict>
 			<dict>
@@ -1633,7 +1633,7 @@ Over</string>
 			<key>height</key>
 			<integer>568</integer>
 			<key>name</key>
-			<string>Phone</string>
+			<string>Phone Portrait</string>
 			<key>scale</key>
 			<real>1</real>
 			<key>width</key>
@@ -1645,11 +1645,25 @@ Over</string>
 			<key>ext</key>
 			<string>tablet phonehd</string>
 			<key>height</key>
-			<integer>568</integer>
+			<integer>512</integer>
 			<key>name</key>
-			<string>Tablet</string>
+			<string>Tablet Portrait</string>
 			<key>scale</key>
 			<real>2</real>
+			<key>width</key>
+			<integer>384</integer>
+		</dict>
+		<dict>
+			<key>centeredOrigin</key>
+			<false/>
+			<key>ext</key>
+			<string>phone</string>
+			<key>height</key>
+			<integer>480</integer>
+			<key>name</key>
+			<string>iPhone Portrait (short)</string>
+			<key>scale</key>
+			<real>1</real>
 			<key>width</key>
 			<integer>320</integer>
 		</dict>
@@ -1694,7 +1708,7 @@ Over</string>
 		</dict>
 	</array>
 	<key>stageBorder</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>stageColor</key>
 	<integer>0</integer>
 </dict>

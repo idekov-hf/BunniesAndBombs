@@ -1,22 +1,48 @@
 import Foundation
 
+enum Side {
+    case Left, Right
+}
+
 class MainScene: CCNode, CCPhysicsCollisionDelegate {
 
     // SpriteBuilder code connections
     weak var enemy: Enemy!
     weak var gamePhysicsNode: CCPhysicsNode!
-    weak var gameOver: CCNode!
+    weak var leftSpawn: CCNode!
+    weak var rightSpawn: CCNode!
+    
+    
     
     // Variables
-//    var enemyArray: Array!
+//    var width = CCDirector.sharedDirector().viewSize().width
+    var height = CCDirector.sharedDirector().viewSize().height
+    var enemyArray: [CCSprite] = []
+//    var xSpawnCoord: CGFloat!
+//    var spawnSide: Side! {
+//        didSet {
+//            if spawnSide == .Left {
+//                xSpawnCoord = 0.2 * width
+//            }
+//            else {
+//                xSpawnCoord = 0.8 * width
+//            }
+//        }
+//    }
     
+    // code is run when the class is loaded
     func didLoadFromCCB(){
         gamePhysicsNode.collisionDelegate = self
+        sendWave(6, interval: 1.0)
     }
     
-    func sendWave(numberOfEnemies: Int, interval: Double, enemySpeed: Double){
-        for i in 0..<numberOfEnemies{
-            
+    override func onEnter() {
+        super.onEnter()
+    }
+    
+    func sendWave(numberOfEnemies: Int, interval: Double){
+        for i in 0..<numberOfEnemies {
+                        
         }
     }
     
@@ -26,9 +52,11 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, enemy: CCNode!, ground: CCNode!) -> ObjCBool {
         println("Game Over")
-        gameOver.visible = true
+        let gameOver = CCBReader.loadAsScene("gameOver")
+        CCDirector.sharedDirector().presentScene(gameOver)
         return true
     }
+    
     
     //gameover check function
 
