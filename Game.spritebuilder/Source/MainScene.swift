@@ -15,8 +15,9 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     // Variables
     var screenWidth = CCDirector.sharedDirector().viewSize().width
     var screenHeight = CCDirector.sharedDirector().viewSize().height
-    var enemyArray: [Enemy] = []
-    var firstEnemyYPos = CGFloat(0.4) * CCDirector.sharedDirector().viewSize().height
+    var enemyArray = [Enemy]()
+//    var firstEnemyYPos = CGFloat(0.278) * CCDirector.sharedDirector().viewSize().height
+    var firstEnemyYPos = CGFloat(192)
     var score: Int = 0 {
         didSet {
             scoreLabel.string = "\(score)"
@@ -28,7 +29,9 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         userInteractionEnabled = true
         setupGestures()
         gamePhysicsNode.collisionDelegate = self
-        sendWave(6, interval: 1.0)
+        sendWave(5)
+        schedule("moveEnemiesDown", interval: 0.5)
+        
 //        gamePhysicsNode.debugDraw = true
     }
     
@@ -36,13 +39,19 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         super.onEnter()
     }
     
-    func sendWave(numberOfEnemies: Int, interval: Double){
+    func sendWave(numberOfEnemies: Int){
 //        println(height.dynamicType)
-        for i in 0..<numberOfEnemies{
+        for i in 0..<numberOfEnemies {
             let enemy = CCBReader.load("Enemy") as! Enemy
-            enemy.position.y = firstEnemyYPos + (CGFloat(i) * CGFloat(0.4) * screenHeight)
+            enemy.position.y = firstEnemyYPos + (CGFloat(i) * CGFloat(80))
             enemyArray.append(enemy)
             gamePhysicsNode.addChild(enemy)
+        }
+    }
+    
+    func moveEnemiesDown() {
+        for enemy in enemyArray {
+            enemy.position.y -= 80
         }
     }
     
@@ -50,12 +59,24 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         
     }
     
+    func removeGestures() {
+        
+    }
+    
     // Collisions
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, enemy: CCNode!, ground: CCNode!) -> ObjCBool {
         println("Game Over")
-        let gameOver = CCBReader.loadAsScene("GameOver")
-        CCDirector.sharedDirector().presentScene(gameOver)
+        removeSwipeGestures()
+        loadGameOverScene()
         return true
+    }
+    
+    func loadGameOverScene() {
+        var gameOverScene = CCBReader.load("GameOver") as! GameOver
+        gameOverScene.score = score
+        var scene = CCScene()
+        scene.addChild(gameOverScene)
+        CCDirector.sharedDirector().presentScene(scene)
     }
     
     func setupGestures() {
@@ -74,27 +95,43 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         // if so, remove it from the scene
         var enemyXPos = enemyArray[0].position.x
         var enemyYPos = enemyArray[0].position.y
-        if enemyYPos < 100 && enemyYPos > 30 && enemyXPos < screenWidth / 2 {
-            removeFirstEnemy()
-            score += 1
-        }
-    }
-    
-    func swipeRight() {
-        println("Right swipe!")
-        var enemyXPos = enemyArray[0].position.x
-        var enemyYPos = enemyArray[0].position.y
-        if enemyYPos < 100 && enemyYPos > 30 && enemyXPos > screenWidth / 2 {
+        if enemyYPos < 160 && enemyYPos >= 96 && enemyXPos < screenWidth / 2 {
             removeFirstEnemy()
             score += 1
         }
         
     }
     
+    func swipeRight() {
+        println("Right swipe!")
+        var enemyXPos = enemyArray[0].position.x
+        var enemyYPos = enemyArray[0].position.y
+        if enemyYPos < 160 && enemyYPos >= 96 && enemyXPos > screenWidth / 2 {
+            removeFirstEnemy()
+            score += 1
+        }
+        
+    }
+    
+    func removeSwipeGestures() {
+        var view = CCDirector.sharedDirector().view
+        for recognizer in view.gestureRecognizers as! [UIGestureRecognizer] {
+            view.removeGestureRecognizer(recognizer)
+        }
+    }
+    
     func removeFirstEnemy() {
         gamePhysicsNode.removeChild(enemyArray[0])
         enemyArray.removeAtIndex(0)
+        let newEnemy = CCBReader.load("Enemy") as! Enemy
+        newEnemy.position.y = CGFloat(592)
+        enemyArray.append(newEnemy)
+        gamePhysicsNode.addChild(newEnemy)
+        
+        
+//        enemyArray[0].position.y = 608
     }
+    
     
     //gameover check function
 
