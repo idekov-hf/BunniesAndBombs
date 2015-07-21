@@ -5,7 +5,7 @@ enum Side {
 }
 
 class MainScene: CCNode, CCPhysicsCollisionDelegate {
-
+    
     // SpriteBuilder code connections
     weak var gamePhysicsNode: CCPhysicsNode!
     weak var leftSpawn: CCNode!
@@ -24,13 +24,16 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         }
     }
     
+    var fallInterval: Double = 0.5
+    var fallSpeed: CGFloat = 80
+    
     // code is run when the class is loaded
     func didLoadFromCCB(){
         userInteractionEnabled = true
         setupGestures()
         gamePhysicsNode.collisionDelegate = self
         sendWave(5)
-        schedule("moveEnemiesDown", interval: 0.5)
+        schedule("moveEnemiesDown", interval: fallInterval)
         
 //        gamePhysicsNode.debugDraw = true
     }
@@ -51,7 +54,8 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     
     func moveEnemiesDown() {
         for enemy in enemyArray {
-            enemy.position.y -= 80
+//            enemy.position.y -= fallSpeed
+            enemy.moveDown()
         }
     }
     
@@ -72,8 +76,25 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     func loadGameOverScene() {
+        
+        // highscore code
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var highscore = defaults.integerForKey("highscore")
+        if score > highscore {
+            defaults.setInteger(score, forKey: "highscore")
+        }
+        
+        // load game over scene
         var gameOverScene = CCBReader.load("GameOver") as! GameOver
+        
+        // set current score
         gameOverScene.score = score
+        
+        // set high score
+        var newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscore")
+        gameOverScene.bestScore.string = "\(newHighscore)"
+        
+        // load game over scene with correct score information
         var scene = CCScene()
         scene.addChild(gameOverScene)
         CCDirector.sharedDirector().presentScene(scene)
@@ -96,8 +117,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         var enemyXPos = enemyArray[0].position.x
         var enemyYPos = enemyArray[0].position.y
         if enemyYPos < 160 && enemyYPos >= 96 && enemyXPos < screenWidth / 2 {
-            removeFirstEnemy()
-            score += 1
+            increaseScore()
         }
         
     }
@@ -107,10 +127,33 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         var enemyXPos = enemyArray[0].position.x
         var enemyYPos = enemyArray[0].position.y
         if enemyYPos < 160 && enemyYPos >= 96 && enemyXPos > screenWidth / 2 {
-            removeFirstEnemy()
-            score += 1
+            increaseScore()
         }
         
+    }
+    
+    func increaseScore() {
+        removeFirstEnemy()
+        score += 1
+        if score % 5 == 0 {
+            increaseInterval()
+        }
+    }
+    
+    func increaseInterval(){
+        unschedule("moveEnemiesDown")
+        fallInterval = fallInterval * 0.95
+        schedule("moveEnemiesDown", interval: fallInterval)
+    }
+    
+    func removeFirstEnemy() {
+        gamePhysicsNode.removeChild(enemyArray[0])
+        enemyArray.removeAtIndex(0)
+        let newEnemy = CCBReader.load("Enemy") as! Enemy
+        newEnemy.position.y = CGFloat(528)
+        enemyArray.append(newEnemy)
+        gamePhysicsNode.addChild(newEnemy)
+//        enemyArray[0].position.y = 608
     }
     
     func removeSwipeGestures() {
@@ -119,24 +162,4 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
             view.removeGestureRecognizer(recognizer)
         }
     }
-    
-    func removeFirstEnemy() {
-        gamePhysicsNode.removeChild(enemyArray[0])
-        enemyArray.removeAtIndex(0)
-        let newEnemy = CCBReader.load("Enemy") as! Enemy
-        newEnemy.position.y = CGFloat(592)
-        enemyArray.append(newEnemy)
-        gamePhysicsNode.addChild(newEnemy)
-        
-        
-//        enemyArray[0].position.y = 608
-    }
-    
-    
-    //gameover check function
-
-    
-    //gameover function
-    
-    
 }
