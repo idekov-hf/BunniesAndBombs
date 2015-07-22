@@ -26,7 +26,6 @@ class Enemy: CCSprite {
     
     func didLoadFromCCB(){
         scale = 3.0
-//        schedule("moveDown", interval: 0.5)
         randomSide = Int(arc4random_uniform(2))
         position.x = xSpawnCoord
     }

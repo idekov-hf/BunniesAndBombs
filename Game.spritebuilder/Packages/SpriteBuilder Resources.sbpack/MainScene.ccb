@@ -430,7 +430,7 @@
 				<key>displayName</key>
 				<string>character</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>character</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -479,6 +479,8 @@
 						<string>Character.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

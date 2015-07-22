@@ -11,6 +11,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     weak var leftSpawn: CCNode!
     weak var rightSpawn: CCNode!
     weak var scoreLabel: CCLabelTTF!
+    weak var character: Character!
     
     // Variables
     var screenWidth = CCDirector.sharedDirector().viewSize().width
@@ -43,7 +44,6 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     func sendWave(numberOfEnemies: Int){
-//        println(height.dynamicType)
         for i in 0..<numberOfEnemies {
             let enemy = CCBReader.load("Enemy") as! Enemy
             enemy.position.y = firstEnemyYPos + (CGFloat(i) * CGFloat(80))
@@ -60,10 +60,6 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     override func update(delta: CCTime) {
-        
-    }
-    
-    func removeGestures() {
         
     }
     
@@ -116,6 +112,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         // if so, remove it from the scene
         var enemyXPos = enemyArray[0].position.x
         var enemyYPos = enemyArray[0].position.y
+        character.flipX = true
         if enemyYPos < 160 && enemyYPos >= 96 && enemyXPos < screenWidth / 2 {
             increaseScore()
         }
@@ -126,6 +123,8 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         println("Right swipe!")
         var enemyXPos = enemyArray[0].position.x
         var enemyYPos = enemyArray[0].position.y
+        character.flipX = false
+        character.animationManager.runAnimationsForSequenceNamed("punch")
         if enemyYPos < 160 && enemyYPos >= 96 && enemyXPos > screenWidth / 2 {
             increaseScore()
         }

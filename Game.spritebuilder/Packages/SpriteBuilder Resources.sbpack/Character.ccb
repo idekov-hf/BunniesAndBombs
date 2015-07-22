@@ -79,6 +79,24 @@
 								<string>Use regular file</string>
 							</array>
 						</dict>
+						<dict>
+							<key>easing</key>
+							<dict>
+								<key>type</key>
+								<integer>0</integer>
+							</dict>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>time</key>
+							<real>0.10000000149011612</real>
+							<key>type</key>
+							<integer>7</integer>
+							<key>value</key>
+							<array>
+								<string>images/char.png</string>
+								<string>Use regular file</string>
+							</array>
+						</dict>
 					</array>
 					<key>name</key>
 					<string>spriteFrame</string>
@@ -160,7 +178,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>images/char2.png</string>
+					<string>images/char.png</string>
 				</array>
 			</dict>
 			<dict>
@@ -289,7 +307,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.066666670143604279</real>
+			<real>0.10000000149011612</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
