@@ -13,13 +13,16 @@ class Enemy: CCSprite {
     var moveSpeed : CGFloat = 80
     var width = CCDirector.sharedDirector().viewSize().width
     var xSpawnCoord: CGFloat!
+    var spawnSide: String!
     var randomSide: Int! {
         didSet {
             if randomSide == 0 {
                 xSpawnCoord = 0.2 * width
+                spawnSide = "Left"
             }
             else {
                 xSpawnCoord = 0.8 * width
+                spawnSide = "Right"
             }
         }
     }
