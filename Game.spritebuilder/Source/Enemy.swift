@@ -40,7 +40,7 @@ class Enemy: CCSprite {
     }
     
     func moveDown(){
-        position.y -= 80
+        position.y -= 96
 //        println(position.y)
     }
 }

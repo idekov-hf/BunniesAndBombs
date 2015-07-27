@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>167</integer>
+	<integer>198</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -205,40 +205,40 @@
 							<key>points</key>
 							<array>
 								<array>
-									<real>319.98446655273438</real>
-									<real>0.68796122074127197</real>
+									<real>278.80859375</real>
+									<real>26.894523620605469</real>
 								</array>
 								<array>
-									<real>319.98446655273438</real>
-									<real>95.048179626464844</real>
+									<real>278.80859375</real>
+									<real>68.6015625</real>
 								</array>
 								<array>
-									<real>-0.070836760103702545</real>
-									<real>95.048179626464844</real>
+									<real>33.60546875</real>
+									<real>68.6015625</real>
 								</array>
 								<array>
-									<real>-0.070836760103702545</real>
-									<real>0.68796122074127197</real>
+									<real>33.60546875</real>
+									<real>26.894523620605469</real>
 								</array>
 							</array>
 							<key>polygons</key>
 							<array>
 								<array>
 									<array>
-										<real>319.98446655273438</real>
-										<real>0.68796122074127197</real>
+										<real>278.80859375</real>
+										<real>26.894523620605469</real>
 									</array>
 									<array>
-										<real>319.98446655273438</real>
-										<real>95.048179626464844</real>
+										<real>278.80859375</real>
+										<real>68.6015625</real>
 									</array>
 									<array>
-										<real>-0.070836760103702545</real>
-										<real>95.048179626464844</real>
+										<real>33.60546875</real>
+										<real>68.6015625</real>
 									</array>
 									<array>
-										<real>-0.070836760103702545</real>
-										<real>0.68796122074127197</real>
+										<real>33.60546875</real>
+										<real>26.894523620605469</real>
 									</array>
 								</array>
 							</array>
@@ -1065,8 +1065,6 @@
 						<real>0.5</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

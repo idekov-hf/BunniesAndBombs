@@ -18,8 +18,8 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var screenWidth = CCDirector.sharedDirector().viewSize().width
     var screenHeight = CCDirector.sharedDirector().viewSize().height
     var enemyArray = [Enemy]()
-//    var firstEnemyYPos = CGFloat(0.278) * CCDirector.sharedDirector().viewSize().height
-    var firstEnemyYPos = CGFloat(224)
+    //    var firstEnemyYPos = CGFloat(0.278) * CCDirector.sharedDirector().viewSize().height
+    var firstEnemyYPos = CGFloat(352)
     var score: Int = 0 {
         didSet {
             scoreLabel.string = "\(score)"
@@ -27,7 +27,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     }
     
     var fallInterval: Double = 0.5
-    var fallSpeed: CGFloat = 80
+
     
     // code is run when the class is loaded
     func didLoadFromCCB(){
@@ -35,7 +35,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         gamePhysicsNode.collisionDelegate = self
         gameStart()
         
-//        gamePhysicsNode.debugDraw = true
+        //        gamePhysicsNode.debugDraw = true
     }
     
     func gameStart() {
@@ -45,14 +45,14 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     }
     
     func playButton() {
-        println("Play button was pressed")
+//        println("Play button was pressed")
         animationManager.runAnimationsForSequenceNamed("GamePlay")
     }
     
     func sendWave(numberOfEnemies: Int){
         for i in 0..<numberOfEnemies {
-            let enemy = CCBReader.load("Enemy") as! Enemy
-            enemy.position.y = firstEnemyYPos + (CGFloat(i) * CGFloat(80))
+            let enemy = CCBReader.load("Enemy", owner: self) as! Enemy
+            enemy.position.y = firstEnemyYPos + (CGFloat(i) * CGFloat(96))
             enemyArray.append(enemy)
             gamePhysicsNode.addChild(enemy)
         }
@@ -60,7 +60,6 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     
     func moveEnemiesDown() {
         for enemy in enemyArray {
-//            enemy.position.y -= fallSpeed
             enemy.moveDown()
         }
     }
@@ -114,53 +113,60 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     }
     
     func swipeLeft() {
-        println("Left swipe!")
+//        println("Left swipe!")
         // check to see if the enemy is on the left side of the character
         // if so, remove it from the scene
         var enemyXPos = enemyArray[0].position.x
         var enemyYPos = enemyArray[0].position.y
         character.flipX = true
         character.animationManager.runAnimationsForSequenceNamed("Punch")
-        if enemyYPos < 160 && enemyYPos >= 96 && enemyXPos < screenWidth / 2 {
-
+        if enemyYPos < 170 && enemyYPos >= 150 && enemyXPos < screenWidth / 2 {
+            
             increaseScore()
         }
         
     }
     
     func swipeRight() {
-        println("Right swipe!")
+//        println("Right swipe!")
         var enemyXPos = enemyArray[0].position.x
         var enemyYPos = enemyArray[0].position.y
         character.flipX = false
         character.animationManager.runAnimationsForSequenceNamed("Punch")
-        if enemyYPos < 160 && enemyYPos >= 96 && enemyXPos > screenWidth / 2 {
+        if enemyYPos < 170 && enemyYPos >= 150 && enemyXPos > screenWidth / 2 {
             increaseScore()
         }
         
     }
     
     func increaseScore() {
-//        removeFirstEnemy()
+        //        removeFirstEnemy()
         score += 1
         if score % 5 == 0 {
             increaseInterval()
         }
         
         enemyArray[0].animationManager.runAnimationsForSequenceNamed("Fly\(enemyArray[0].spawnSide)")
-        var removedEnemy = self.enemyArray.removeAtIndex(0)
-        var remove = CCActionCallBlock(block: {self.removeThisEnemy(removedEnemy)})
-        runAction(CCActionSequence(array: [CCActionDelay(duration: 0.5),remove]))
+//        var removedEnemy = self.enemyArray.removeAtIndex(0)
+//        var remove = CCActionCallBlock(block: {self.removeThisEnemy(removedEnemy)})
+//        runAction(CCActionSequence(array: [CCActionDelay(duration: 0.5),remove]))
     }
     
-    func removeThisEnemy(enemy:Enemy) {
-        println("enemy.flipX = \(enemy.flipX)")
-        gamePhysicsNode.removeChild(enemy)
-        let newEnemy = CCBReader.load("Enemy") as! Enemy
-        newEnemy.position.y = CGFloat(544)
+//    func removeThisEnemy(enemy:Enemy) {
+    func removeThisEnemy() {
+//        gamePhysicsNode.removeChild(enemy)
+        enemyArray[0].physicsBody.collisionMask = []
+        gamePhysicsNode.removeChild(enemyArray[0])
+        enemyArray.removeAtIndex(0)
+        spawnNewEnemy()
+    }
+    
+    func spawnNewEnemy() {
+        let newEnemy = CCBReader.load("Enemy", owner: self) as! Enemy
+        newEnemy.position.y = CGFloat(640)
         enemyArray.append(newEnemy)
         gamePhysicsNode.addChild(newEnemy)
-//        enemyArray[0].position.y = 608
+        //        enemyArray[0].position.y = 608
     }
     
     func increaseInterval(){

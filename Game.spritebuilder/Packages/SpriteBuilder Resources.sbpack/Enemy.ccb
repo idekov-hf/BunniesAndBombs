@@ -16,7 +16,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>docDimensionsType</key>
 	<integer>1</integer>
 	<key>fileType</key>
@@ -77,7 +77,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>0.1666666716337204</real>
+									<real>0.13333334028720856</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -126,7 +126,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>0.1666666716337204</real>
+									<real>0.13333334028720856</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -212,12 +212,12 @@
 											<key>name</key>
 											<string>position</string>
 											<key>time</key>
-											<real>0.1666666716337204</real>
+											<real>0.13333334028720856</real>
 											<key>type</key>
 											<integer>3</integer>
 											<key>value</key>
 											<array>
-												<real>64</real>
+												<real>96</real>
 												<real>0.0</real>
 											</array>
 										</dict>
@@ -257,7 +257,7 @@
 											<key>name</key>
 											<string>rotation</string>
 											<key>time</key>
-											<real>0.1666666716337204</real>
+											<real>0.033333335071802139</real>
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
@@ -303,7 +303,7 @@
 											<key>name</key>
 											<string>position</string>
 											<key>time</key>
-											<real>0.1666666716337204</real>
+											<real>0.13333334028720856</real>
 											<key>type</key>
 											<integer>3</integer>
 											<key>value</key>
@@ -346,7 +346,7 @@
 											<key>name</key>
 											<string>rotation</string>
 											<key>time</key>
-											<real>0.1666666716337204</real>
+											<real>0.033333335071802139</real>
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
@@ -394,7 +394,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>64</real>
+									<real>0.0</real>
 									<real>0.0</real>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -433,7 +433,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-120</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -479,8 +479,6 @@
 								<array/>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -516,7 +514,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>20</real>
+							<real>0.0</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -739,6 +737,8 @@
 				<array/>
 			</dict>
 		</array>
+		<key>seqExpanded</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -817,20 +817,37 @@
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.13333334028720856</real>
+						<key>type</key>
+						<integer>12</integer>
+						<key>value</key>
+						<array>
+							<string>removeThisEnemy</string>
+							<integer>2</integer>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>12</integer>
 			</dict>
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>0.1666666716337204</real>
+			<real>0.13333334028720856</real>
 			<key>name</key>
 			<string>FlyRight</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.1666666716337204</real>
+			<real>0.13333334028720856</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -853,20 +870,37 @@
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.13333334028720856</real>
+						<key>type</key>
+						<integer>12</integer>
+						<key>value</key>
+						<array>
+							<string>removeThisEnemy</string>
+							<integer>2</integer>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>12</integer>
 			</dict>
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>0.1666666716337204</real>
+			<real>0.13333334028720856</real>
 			<key>name</key>
 			<string>FlyLeft</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.1666666716337204</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
