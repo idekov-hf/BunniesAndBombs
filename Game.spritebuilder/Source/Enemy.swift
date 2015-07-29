@@ -14,6 +14,7 @@ class Enemy: CCSprite {
     var width = CCDirector.sharedDirector().viewSize().width
     var xSpawnCoord: CGFloat!
     var spawnSide: String!
+    var hasBeenSwiped: Bool = false
     var randomSide: Int! {
         didSet {
             if randomSide == 0 {
@@ -29,6 +30,7 @@ class Enemy: CCSprite {
     
     func didLoadFromCCB(){
         scale = 3.0
+//        hasBeenSwiped = false
         randomSide = Int(arc4random_uniform(2))
         position.x = xSpawnCoord
     }

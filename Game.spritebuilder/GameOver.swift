@@ -18,13 +18,6 @@ class GameOver: CCNode {
             scoreLabel.string = "\(score)"
         }
     }
-    
-    func restart () {
-        var gameplay = CCBReader.load("Gameplay") as! Gameplay
-        var scene = CCScene()
-        scene.addChild(gameplay)
-        var transition = CCTransition(revealWithDirection: .Up, duration: 0.25)
-        CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
-    }
+
     
 }
