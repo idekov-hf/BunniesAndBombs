@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B121030197484FA004C1E1D /* GameActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12102F197484FA004C1E1D /* GameActivity.m */; };
 		5B121038197487F2004C1E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
+		5D957F911B6FF06200118F8A /* Bunny.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D957F901B6FF06200118F8A /* Bunny.swift */; };
 		5DA9D6211B56DAB900AE0C7A /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA9D6201B56DAB900AE0C7A /* GameOver.swift */; };
 		5DF034351B506B3B00EB3E32 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF034341B506B3A00EB3E32 /* Enemy.swift */; };
 		5DF0343B1B506C5200EB3E32 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0343A1B506C5200EB3E32 /* Character.swift */; };
@@ -160,6 +161,7 @@
 		5B121033197485FE004C1E1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Platforms/Android/Info.plist; sourceTree = "<group>"; };
 		5B121034197485FE004C1E1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Platforms/iOS/Info.plist; sourceTree = "<group>"; };
 		5BA4619E1974C88900785744 /* AndroidManifest.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = AndroidManifest.xml; path = Platforms/Android/AndroidManifest.xml; sourceTree = "<group>"; };
+		5D957F901B6FF06200118F8A /* Bunny.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bunny.swift; sourceTree = "<group>"; };
 		5DA9D6201B56DAB900AE0C7A /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		5DF034341B506B3A00EB3E32 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enemy.swift; path = Source/Enemy.swift; sourceTree = "<group>"; };
 		5DF0343A1B506C5200EB3E32 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Character.swift; path = Source/Character.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				7A046D7519E84C36004C4763 /* MainScene.swift */,
 				5DA9D6201B56DAB900AE0C7A /* GameOver.swift */,
 				5DF0343A1B506C5200EB3E32 /* Character.swift */,
+				5D957F901B6FF06200118F8A /* Bunny.swift */,
 				5DF034341B506B3A00EB3E32 /* Enemy.swift */,
 				D352B48019EC608A00829775 /* MetalShaders */,
 			);
@@ -822,6 +825,7 @@
 				5DF034351B506B3B00EB3E32 /* Enemy.swift in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				5DF0343B1B506C5200EB3E32 /* Character.swift in Sources */,
+				5D957F911B6FF06200118F8A /* Bunny.swift in Sources */,
 				5DA9D6211B56DAB900AE0C7A /* GameOver.swift in Sources */,
 				7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,

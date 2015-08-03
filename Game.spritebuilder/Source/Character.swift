@@ -9,5 +9,13 @@
 import Foundation
 
 class Character: CCSprite {
-
+    
+    weak var leftArm: CCNode!
+    weak var rightArm: CCNode!
+    
+    func didLoadFromCCB() {
+        leftArm.zOrder = -1
+        rightArm.zOrder = -1
+    }
+    
 }

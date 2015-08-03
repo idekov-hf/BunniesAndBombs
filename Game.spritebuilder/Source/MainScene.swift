@@ -9,8 +9,6 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     // SpriteBuilder code connections
     weak var gamePhysicsNode: CCPhysicsNode!
     weak var enemyNode: CCNode!
-    weak var leftSpawn: CCNode!
-    weak var rightSpawn: CCNode!
     weak var scoreLabel: CCLabelTTF!
     weak var character: Character!
     
@@ -29,7 +27,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     var score: Int = 0 {
         didSet {
             scoreLabel.string = "\(score)"
-            if score % 5 == 0 {
+            if score % 5 == 0 && scrollSpeed < 200 {
                 scrollSpeed += 10
             }
         }
@@ -37,26 +35,14 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     
     var fallInterval: Double = 0.5
     
-    var scrollSpeed: CGFloat = 110
+    var scrollSpeed: CGFloat = 120
     
     override func update(delta: CCTime) {
         for enemy in enemyArray {
             enemy.position.y = enemy.position.y - scrollSpeed * CGFloat(delta)
         }
         
-
-//        switch score {
-//        case 5:
-//            scrollSpeed += 5
-//        case 10:
-//            scrollSpeed += 5
-//        case 15:
-//            scrollSpeed += 5
-//        case 20:
-//            scrollSpeed += 5
-//        default:
-//            println(scrollSpeed)
-//        }
+        println(scrollSpeed)
     }
     
     // code is run when the class is loaded
@@ -134,11 +120,9 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         if enemyArray.count > 0 {
         
             if touch.locationInWorld().x < CCDirector.sharedDirector().viewSize().width / 2 {
-                character.flipX = true
                 checkForEnemy("Left")
             }
             else {
-                character.flipX = false
                 checkForEnemy("Right")
             }
         }
@@ -172,12 +156,13 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     func checkForEnemy(side: String) {
-        character.animationManager.runAnimationsForSequenceNamed("Punch")
+        character.animationManager.runAnimationsForSequenceNamed("Punch\(side)")
         
         var enemyXPos = enemyArray[0].position.x
         var enemyYPos = enemyArray[0].position.y
         
         if enemyYPos <= 200 && enemyYPos >= 128 && enemyArray[0].spawnSide == side && enemyArray[0].hasBeenSwiped == false {
+            character.rightArm.color = CCColor(red: 0, green: 0, blue: 255)
             enemyArray[0].hasBeenSwiped = true
             score += 1
             enemyArray[0].animationManager.runAnimationsForSequenceNamed("Fly\(enemyArray[0].spawnSide)")
@@ -191,10 +176,19 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     func spawnNewEnemy() {
-        let newEnemy = CCBReader.load("Enemy", owner: self) as! Enemy
-        newEnemy.position.y = enemyArray.last!.position.y + CGFloat(96)
-        enemyArray.append(newEnemy)
-        enemyNode.addChild(newEnemy)
+        var randVar  = arc4random_uniform(10)
+        if randVar == 5 {
+            let bunny = CCBReader.load("Bunny") as! Bunny
+            bunny.position.y = enemyArray.last!.position.y + CGFloat(96)
+            enemyArray.append(bunny)
+            enemyNode.addChild(bunny)
+        }
+        else {
+            let newEnemy = CCBReader.load("Enemy", owner: self) as! Enemy
+            newEnemy.position.y = enemyArray.last!.position.y + CGFloat(96)
+            enemyArray.append(newEnemy)
+            enemyNode.addChild(newEnemy)
+        }
     }
     
     func increaseInterval(){
