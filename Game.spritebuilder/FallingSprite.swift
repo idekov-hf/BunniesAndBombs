@@ -1,21 +1,21 @@
 //
-//  Enemy.swift
+//  GameSprites.swift
 //  Game
 //
-//  Created by Iavor Dekov on 7/10/15.
+//  Created by Iavor Dekov on 8/3/15.
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
 import Foundation
 
-class Enemy: CCSprite {
+class FallingSprite: CCSprite {
     
-    var moveSpeed : CGFloat = 80
+    var spriteType: String!
     var width = CCDirector.sharedDirector().viewSize().width
     var xSpawnCoord: CGFloat!
     var spawnSide: String!
     var hasBeenSwiped: Bool = false
-    var randomSide: Int! {
+    var randomSide: Int! {  
         didSet {
             if randomSide == 0 {
                 xSpawnCoord = 0.2 * width
@@ -28,21 +28,13 @@ class Enemy: CCSprite {
         }
     }
     
-    func didLoadFromCCB(){
-        scale = 3.0
-//        hasBeenSwiped = false
+    func didLoadFromCCB() {
         randomSide = Int(arc4random_uniform(2))
         position.x = xSpawnCoord
     }
     
-    
-    
-    func setInterval(interval: Double){
-        schedule("moveDown", interval: interval)
-    }
-    
     func moveDown(){
         position.y -= 96
-//        println(position.y)
     }
+    
 }

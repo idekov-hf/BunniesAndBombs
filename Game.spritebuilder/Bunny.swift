@@ -8,10 +8,17 @@
 
 import Foundation
 
-class Bunny: CCSprite {
+class Bunny: FallingSprite {
+    
     
     override func update(delta: CCTime) {
-        rotation += 1
+        rotation += 5
+    }
+    
+    override func didLoadFromCCB() {
+        scale = 0.2
+        super.didLoadFromCCB()
+        spriteType = "Bunny"
     }
     
 }
