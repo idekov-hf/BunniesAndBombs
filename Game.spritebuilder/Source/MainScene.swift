@@ -11,7 +11,6 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     weak var enemyNode: CCNode!
     weak var scoreLabel: CCLabelTTF!
     weak var character: Character!
-    
     // game over member variables
     weak var gameOverScoreLabel: CCLabelTTF!
     weak var bestScore: CCLabelTTF!
@@ -19,9 +18,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     // Variables
     var screenWidth = CCDirector.sharedDirector().viewSize().width
     var screenHeight = CCDirector.sharedDirector().viewSize().height
-    
     var spriteArray = [FallingSprite]()
-    
     //    var firstEnemyYPos = CGFloat(0.278) * CCDirector.sharedDirector().viewSize().height
     var firstEnemyYPos = CGFloat(352)
     var score: Int = 0 {
@@ -32,17 +29,16 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
             }
         }
     }
-    
     var fallInterval: Double = 0.5
-    
-    var scrollSpeed: CGFloat = 120
+    var scrollSpeed: CGFloat = 140
+    var bunnyWasHit: Bool = false
     
     override func update(delta: CCTime) {
         for enemy in spriteArray {
             enemy.position.y = enemy.position.y - scrollSpeed * CGFloat(delta)
         }
         
-        println(scrollSpeed)
+//        println(scrollSpeed)
     }
     
     // code is run when the class is loaded
@@ -73,17 +69,17 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     // Collisions
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, enemy: CCNode!, ground: CCNode!) -> ObjCBool {
+    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, bomb: CCNode!, ground: CCNode!) -> ObjCBool {
         if spriteArray[0].hasBeenSwiped == false {
             println("Game Over")
-//            removeSwipeGestures()
-            loadGameOverScene()
+            character.animationManager.runAnimationsForSequenceNamed("GameOver")
+            animationManager.runAnimationsForSequenceNamed("\(spriteArray[0].spawnSide)Explosion")
+
         }
         return true
     }
     
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, bunny: CCNode!, ground: CCNode!) -> ObjCBool {
-        
         score += 1
         enemyNode.removeChild(spriteArray[0])
         spriteArray.removeAtIndex(0)
@@ -94,7 +90,6 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     func loadGameOverScene() {
-        
         // highscore code
         let defaults = NSUserDefaults.standardUserDefaults()
         var highscore = defaults.integerForKey("highscore")
@@ -108,14 +103,19 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         gameOverScoreLabel.string = "\(score)"
         
         // reset variabels and remove enemies from the scene
-        scoreLabel.visible = false
         enemyNode.removeAllChildren()
         spriteArray = [FallingSprite]()
-        scrollSpeed = 110
+        scoreLabel.visible = false
+        scrollSpeed = 140
         score = 0
         
         // play game over sequence
-        animationManager.runAnimationsForSequenceNamed("GameOver")
+        if bunnyWasHit == true {
+            character.animationManager.runAnimationsForSequenceNamed("GameOver")
+            animationManager.runAnimationsForSequenceNamed("GameOver")
+        }
+        
+        bunnyWasHit = false
     }
     
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
@@ -145,7 +145,9 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
             spriteArray[0].animationManager.runAnimationsForSequenceNamed("Fly\(spriteArray[0].spawnSide)")
             }
             else {
-                loadGameOverScene()
+                bunnyWasHit = true
+                spriteArray[0].animationManager.runAnimationsForSequenceNamed("Fly\(spriteArray[0].spawnSide)")
+//                animationManager.runAnimationsForSequenceNamed("GameOver")
             }
         }
     }
@@ -157,13 +159,12 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     func spawnNewEnemy() {
-        var randVar  = arc4random_uniform(10)
+        var randVar  = arc4random_uniform(8)
         if randVar == 5 {
-            let bunny = CCBReader.load("Bunny") as! Bunny
-            
-            bunny.position.y = spriteArray.last!.position.y + CGFloat(96)
-            spriteArray.append(bunny)
-            enemyNode.addChild(bunny)
+            let newBunny = CCBReader.load("Bunny", owner: self) as! Bunny
+            newBunny.position.y = spriteArray.last!.position.y + CGFloat(96)
+            spriteArray.append(newBunny)
+            enemyNode.addChild(newBunny)
         }
         else {
             let newBomb = CCBReader.load("Bomb", owner: self) as! Bomb
@@ -175,6 +176,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     
     
     func restart () {
+        character.animationManager.runAnimationsForSequenceNamed("Main")
         animationManager.runAnimationsForSequenceNamed("Restart")
     }
 }

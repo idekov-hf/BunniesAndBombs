@@ -16,7 +16,7 @@ class Bunny: FallingSprite {
     }
     
     override func didLoadFromCCB() {
-        scale = 0.2
+//        scale = 0.2
         super.didLoadFromCCB()
         spriteType = "Bunny"
     }
