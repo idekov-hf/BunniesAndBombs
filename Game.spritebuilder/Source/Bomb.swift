@@ -11,7 +11,6 @@ import Foundation
 class Bomb: FallingSprite {
     
     override func didLoadFromCCB(){
-//        scale = 3.0
         super.didLoadFromCCB()
         spriteType = "Bomb"
     }

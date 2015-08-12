@@ -14,17 +14,19 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     // game over member variables
     weak var gameOverScoreLabel: CCLabelTTF!
     weak var bestScore: CCLabelTTF!
+    weak var tutorialBomb: Bomb!
+    weak var hand: CCSprite!
     
     // Variables
     var screenWidth = CCDirector.sharedDirector().viewSize().width
     var screenHeight = CCDirector.sharedDirector().viewSize().height
-    var spriteArray = [FallingSprite]()
+    var spriteArray: [FallingSprite] = []
     //    var firstEnemyYPos = CGFloat(0.278) * CCDirector.sharedDirector().viewSize().height
     var firstEnemyYPos = CGFloat(352)
     var score: Int = 0 {
         didSet {
             scoreLabel.string = "\(score)"
-            if score % 5 == 0 && scrollSpeed < 300 {
+            if score % 5 == 0 && scrollSpeed < 350 {
                 scrollSpeed += 10
             }
         }
@@ -32,30 +34,73 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     var fallInterval: Double = 0.5
     var scrollSpeed: CGFloat = 140
     var bunnyWasHit: Bool = false
-    
-    override func update(delta: CCTime) {
-        for enemy in spriteArray {
-            enemy.position.y = enemy.position.y - scrollSpeed * CGFloat(delta)
-        }
-        
-//        println(scrollSpeed)
-    }
+    var tutorial: Bool = true
+    var gameOver: Bool = false
     
     // code is run when the class is loaded
     func didLoadFromCCB(){
-        userInteractionEnabled = true
         gamePhysicsNode.collisionDelegate = self
         animationManager.runAnimationsForSequenceNamed("MainMenu")
-        //        gamePhysicsNode.debugDraw = true
+//        gamePhysicsNode.debugDraw = true
     }
     
+    override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
+        if tutorial == true {
+            if touch.locationInWorld().x > CCDirector.sharedDirector().viewSize().width / 2 {
+                character.animationManager.runAnimationsForSequenceNamed("PunchRight")
+                animationManager.runAnimationsForSequenceNamed("ToGameplayFromTutorial")   
+            }
+        }
+        else {
+            if spriteArray.count > 0 {
+                if touch.locationInWorld().x < CCDirector.sharedDirector().viewSize().width / 2 {
+                    checkForEnemy("Left")
+                }
+                else {
+                    checkForEnemy("Right")
+                }
+            }
+        }
+    }
+    
+    func startGameAfterTutorial() {
+        gameStart()
+        tutorial = false
+    }
+    func enableUserInteraction() {
+        userInteractionEnabled = true
+    }
+    
+    override func update(delta: CCTime) {
+        if tutorial == false && gameOver == false {
+            for enemy in spriteArray {
+                enemy.position.y = enemy.position.y - scrollSpeed * CGFloat(delta)
+            }
+        }
+    }
+    
+    // buttons / selectors
     func play() {
-        animationManager.runAnimationsForSequenceNamed("ToGameplay")
+        if tutorial == true {
+            animationManager.runAnimationsForSequenceNamed("Tutorial")
+        } else {
+            animationManager.runAnimationsForSequenceNamed("ToGameplay")
+        }
+    }
+    
+    func home() {
+        character.animationManager.runAnimationsForSequenceNamed("Main")
+        animationManager.runAnimationsForSequenceNamed("ToMainMenu")
+    }
+    
+    func restart () {
+        character.animationManager.runAnimationsForSequenceNamed("Main")
+        animationManager.runAnimationsForSequenceNamed("Restart")
     }
     
     func gameStart() {
+        gameOver = false
         scoreLabel.visible = true
-//        setupSwipeGestures()
         sendWave(5)
     }
     
@@ -66,27 +111,6 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
             spriteArray.append(bomb)
             enemyNode.addChild(bomb)
         }
-    }
-    
-    // Collisions
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, bomb: CCNode!, ground: CCNode!) -> ObjCBool {
-        if spriteArray[0].hasBeenSwiped == false {
-            println("Game Over")
-            character.animationManager.runAnimationsForSequenceNamed("GameOver")
-            animationManager.runAnimationsForSequenceNamed("\(spriteArray[0].spawnSide)Explosion")
-
-        }
-        return true
-    }
-    
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, bunny: CCNode!, ground: CCNode!) -> ObjCBool {
-        score += 1
-        enemyNode.removeChild(spriteArray[0])
-        spriteArray.removeAtIndex(0)
-        spawnNewEnemy()
-        
-        return true
-        
     }
     
     func loadGameOverScene() {
@@ -104,7 +128,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         
         // reset variabels and remove enemies from the scene
         enemyNode.removeAllChildren()
-        spriteArray = [FallingSprite]()
+        spriteArray = []
         scoreLabel.visible = false
         scrollSpeed = 140
         score = 0
@@ -118,19 +142,6 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         bunnyWasHit = false
     }
     
-    override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
-        
-        if spriteArray.count > 0 {
-        
-            if touch.locationInWorld().x < CCDirector.sharedDirector().viewSize().width / 2 {
-                checkForEnemy("Left")
-            }
-            else {
-                checkForEnemy("Right")
-            }
-        }
-    }
-    
     func checkForEnemy(side: String) {
         character.animationManager.runAnimationsForSequenceNamed("Punch\(side)")
         
@@ -139,15 +150,13 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         
         if enemyYPos <= 200 && enemyYPos >= 128 && spriteArray[0].spawnSide == side && spriteArray[0].hasBeenSwiped == false {
             if spriteArray[0].spriteType == "Bomb" {
-//            character.rightArm.color = CCColor(red: 0, green: 0, blue: 255)
-            spriteArray[0].hasBeenSwiped = true
-            score += 1
-            spriteArray[0].animationManager.runAnimationsForSequenceNamed("Fly\(spriteArray[0].spawnSide)")
+                spriteArray[0].hasBeenSwiped = true
+                score += 1
+                spriteArray[0].animationManager.runAnimationsForSequenceNamed("Fly\(spriteArray[0].spawnSide)")
             }
             else {
                 bunnyWasHit = true
                 spriteArray[0].animationManager.runAnimationsForSequenceNamed("Fly\(spriteArray[0].spawnSide)")
-//                animationManager.runAnimationsForSequenceNamed("GameOver")
             }
         }
     }
@@ -174,9 +183,21 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         }
     }
     
+    // Collisions
+    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, bomb: CCNode!, ground: CCNode!) -> ObjCBool {
+        if spriteArray[0].hasBeenSwiped == false {
+            gameOver = true
+            character.animationManager.runAnimationsForSequenceNamed("GameOver")
+            animationManager.runAnimationsForSequenceNamed("\(spriteArray[0].spawnSide)Explosion")
+        }
+        return true
+    }
     
-    func restart () {
-        character.animationManager.runAnimationsForSequenceNamed("Main")
-        animationManager.runAnimationsForSequenceNamed("Restart")
+    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, bunny: CCNode!, ground: CCNode!) -> ObjCBool {
+        score += 1
+        enemyNode.removeChild(spriteArray[0])
+        spriteArray.removeAtIndex(0)
+        spawnNewEnemy()
+        return true
     }
 }

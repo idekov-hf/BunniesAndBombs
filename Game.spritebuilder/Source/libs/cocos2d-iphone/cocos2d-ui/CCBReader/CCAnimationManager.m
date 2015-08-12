@@ -508,13 +508,13 @@ static NSInteger ccbAnimationManagerID = 0;
     for (NSValue* nodePtr in _nodeSequences) {
         
         CCNode* node = [nodePtr pointerValue];
-        
+
         NSDictionary* seqs = [_nodeSequences objectForKey:nodePtr];
         NSDictionary* seqNodeProps = [seqs objectForKey:[NSNumber numberWithInt:seqId]];
         
         NSMutableSet* seqNodePropNames = [NSMutableSet set];
-		
-		// Reset nodes that have sequence node properties, build first keyframe action sequence.
+        
+        // Reset nodes that have sequence node properties, build first keyframe action sequence.
         for (NSString* propName in seqNodeProps) {
             CCBSequenceProperty* seqProp = [seqNodeProps objectForKey:propName];
             [seqNodePropNames addObject:propName];
@@ -525,7 +525,7 @@ static NSInteger ccbAnimationManagerID = 0;
             // Build First Key Frame Sequence
             [self runActionsForNode:node sequenceProperty:seqProp tweenDuration:tweenDuration startKeyFrame:0];
         }
-		
+        
         // Always Reset the nodes that may have been changed by other timelines
         NSDictionary* nodeBaseValues = [_baseValues objectForKey:nodePtr];
         for (NSString* propName in nodeBaseValues) {
