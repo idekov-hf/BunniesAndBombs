@@ -36,6 +36,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     var bunnyWasHit: Bool = false
     var tutorial: Bool = true
     var gameOver: Bool = false
+    var rightTutorialBombHit = false
     
     // code is run when the class is loaded
     func didLoadFromCCB(){
@@ -48,7 +49,13 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         if tutorial == true {
             if touch.locationInWorld().x > CCDirector.sharedDirector().viewSize().width / 2 {
                 character.animationManager.runAnimationsForSequenceNamed("PunchRight")
-                animationManager.runAnimationsForSequenceNamed("ToGameplayFromTutorial")   
+                animationManager.runAnimationsForSequenceNamed("ToLeftTutorial")
+                rightTutorialBombHit = true
+                
+            }
+            else if touch.locationInWorld().x < CCDirector.sharedDirector().viewSize().width / 2 && rightTutorialBombHit == true {
+                character.animationManager.runAnimationsForSequenceNamed("PunchLeft")
+                animationManager.runAnimationsForSequenceNamed("ToGameplayFromTutorial")
             }
         }
         else {
@@ -63,14 +70,6 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         }
     }
     
-    func startGameAfterTutorial() {
-        gameStart()
-        tutorial = false
-    }
-    func enableUserInteraction() {
-        userInteractionEnabled = true
-    }
-    
     override func update(delta: CCTime) {
         if tutorial == false && gameOver == false {
             for enemy in spriteArray {
@@ -79,10 +78,22 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         }
     }
     
+    func toLeftTutorial() {
+        animationManager.runAnimationsForSequenceNamed("LeftTutorial")
+    }
+    
+    func startGameAfterTutorial() {
+        gameStart()
+        tutorial = false
+    }
+    func enableUserInteraction() {
+        userInteractionEnabled = true
+    }
+    
     // buttons / selectors
     func play() {
         if tutorial == true {
-            animationManager.runAnimationsForSequenceNamed("Tutorial")
+            animationManager.runAnimationsForSequenceNamed("RightTutorial")
         } else {
             animationManager.runAnimationsForSequenceNamed("ToGameplay")
         }
