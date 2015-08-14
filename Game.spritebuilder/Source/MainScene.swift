@@ -115,6 +115,14 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         sendWave(5)
     }
     
+    func info() {
+        animationManager.runAnimationsForSequenceNamed(<#name: String!#>)
+    }
+    
+    func leaderboard() {
+        animationManager.runAnimationsForSequenceNamed(<#name: String!#>)
+    }
+    
     func sendWave(numberOfEnemies: Int){
         for i in 0..<numberOfEnemies {
             let bomb = CCBReader.load("Bomb", owner: self) as! Bomb
