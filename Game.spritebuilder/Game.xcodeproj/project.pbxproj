@@ -12,6 +12,9 @@
 		5D733CA61B7D2D9B003BFDE1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D733CA51B7D2D9B003BFDE1 /* Images.xcassets */; };
 		5D957F911B6FF06200118F8A /* Bunny.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D957F901B6FF06200118F8A /* Bunny.swift */; };
 		5D957F951B6FF4D200118F8A /* FallingSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D957F941B6FF4D200118F8A /* FallingSprite.swift */; };
+		5DA081E21B7E6063005505BF /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA081E11B7E6063005505BF /* GameKit.framework */; };
+		5DA081E41B7E63B5005505BF /* GameCenterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA081E31B7E63B5005505BF /* GameCenterInteractor.swift */; };
+		5DA081E61B7E7941005505BF /* iAdHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA081E51B7E7941005505BF /* iAdHandler.swift */; };
 		5DF034351B506B3B00EB3E32 /* Bomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF034341B506B3A00EB3E32 /* Bomb.swift */; };
 		5DF0343B1B506C5200EB3E32 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0343A1B506C5200EB3E32 /* Character.swift */; };
 		7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A046D7519E84C36004C4763 /* MainScene.swift */; };
@@ -165,6 +168,9 @@
 		5D733CA51B7D2D9B003BFDE1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5D957F901B6FF06200118F8A /* Bunny.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bunny.swift; sourceTree = "<group>"; };
 		5D957F941B6FF4D200118F8A /* FallingSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FallingSprite.swift; sourceTree = "<group>"; };
+		5DA081E11B7E6063005505BF /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		5DA081E31B7E63B5005505BF /* GameCenterInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterInteractor.swift; sourceTree = "<group>"; };
+		5DA081E51B7E7941005505BF /* iAdHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iAdHandler.swift; sourceTree = "<group>"; };
 		5DF034341B506B3A00EB3E32 /* Bomb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bomb.swift; path = Source/Bomb.swift; sourceTree = "<group>"; };
 		5DF0343A1B506C5200EB3E32 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Character.swift; path = Source/Character.swift; sourceTree = "<group>"; };
 		7A046D7519E84C36004C4763 /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainScene.swift; path = Source/MainScene.swift; sourceTree = "<group>"; };
@@ -263,6 +269,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DA081E21B7E6063005505BF /* GameKit.framework in Frameworks */,
 				7A97911819E631CD001FFC4D /* libcocos2d.a in Frameworks */,
 				8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */,
 				B77F1B3217B978D7009739AE /* QuartzCore.framework in Frameworks */,
@@ -445,10 +452,12 @@
 			children = (
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				7A046D7519E84C36004C4763 /* MainScene.swift */,
+				5DA081E31B7E63B5005505BF /* GameCenterInteractor.swift */,
 				5DF0343A1B506C5200EB3E32 /* Character.swift */,
 				5D957F941B6FF4D200118F8A /* FallingSprite.swift */,
 				5D957F901B6FF06200118F8A /* Bunny.swift */,
 				5DF034341B506B3A00EB3E32 /* Bomb.swift */,
+				5DA081E51B7E7941005505BF /* iAdHandler.swift */,
 				D352B48019EC608A00829775 /* MetalShaders */,
 			);
 			name = Source;
@@ -500,6 +509,7 @@
 		B77F1B3017B978D7009739AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5DA081E11B7E6063005505BF /* GameKit.framework */,
 				BC5399D31A44DCC90063F482 /* AndroidKit.framework */,
 				BC5399D41A44DCC90063F482 /* CoreJava.framework */,
 				BC5399D51A44DCC90063F482 /* GLActivityKit.framework */,
@@ -828,7 +838,9 @@
 			files = (
 				5D957F951B6FF4D200118F8A /* FallingSprite.swift in Sources */,
 				5DF034351B506B3B00EB3E32 /* Bomb.swift in Sources */,
+				5DA081E61B7E7941005505BF /* iAdHandler.swift in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
+				5DA081E41B7E63B5005505BF /* GameCenterInteractor.swift in Sources */,
 				5DF0343B1B506C5200EB3E32 /* Character.swift in Sources */,
 				5D957F911B6FF06200118F8A /* Bunny.swift in Sources */,
 				7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */,

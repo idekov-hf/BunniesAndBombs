@@ -1,4 +1,5 @@
 import Foundation
+import GameKit
 
 enum Side {
     case Left, Right
@@ -40,6 +41,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     
     // code is run when the class is loaded
     func didLoadFromCCB(){
+        setUpGameCenter()
         gamePhysicsNode.collisionDelegate = self
         animationManager.runAnimationsForSequenceNamed("MainMenu")
 //        gamePhysicsNode.debugDraw = true
@@ -116,12 +118,16 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     func info() {
-        animationManager.runAnimationsForSequenceNamed(<#name: String!#>)
+        animationManager.runAnimationsForSequenceNamed("Info")
     }
     
-    func leaderboard() {
-        animationManager.runAnimationsForSequenceNamed(<#name: String!#>)
+    func infoToMainMenu() {
+        animationManager.runAnimationsForSequenceNamed("InfoToMainMenu")
     }
+    
+//    func showLeaderboard() {
+//        animationManager.runAnimationsForSequenceNamed(<#name: String!#>)
+//    }
     
     func sendWave(numberOfEnemies: Int){
         for i in 0..<numberOfEnemies {
@@ -138,6 +144,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         var highscore = defaults.integerForKey("highscore")
         if score > highscore {
             defaults.setInteger(score, forKey: "highscore")
+            reportHighScoreToGameCenter()
         }
         
         // set high score
@@ -219,4 +226,39 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         spawnNewEnemy()
         return true
     }
+}
+
+func setUpGameCenter() {
+    let gameCenterInteractor = GameCenterInteractor.sharedInstance
+    gameCenterInteractor.authenticationCheck()
+}
+
+func reportHighScoreToGameCenter(){
+    var scoreReporter = GKScore(leaderboardIdentifier: "SinglePlayerLeaderboard")
+    scoreReporter.value = Int64(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))
+    var scoreArray: [GKScore] = [scoreReporter]
+    
+    GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError!) -> Void in
+        if error != nil {
+            println("Game Center: Score Submission Error")
+        }
+    })
+    
+}
+
+// MARK: Game Center Handling
+extension MainScene: GKGameCenterControllerDelegate {
+
+    func showLeaderboard() {
+        var viewController = CCDirector.sharedDirector().parentViewController!
+        var gameCenterViewController = GKGameCenterViewController()
+        gameCenterViewController.gameCenterDelegate = self
+        viewController.presentViewController(gameCenterViewController, animated: true, completion: nil)
+    }
+
+    // Delegate methods
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
+        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+
 }
