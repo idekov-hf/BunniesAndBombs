@@ -1,5 +1,6 @@
 import Foundation
 import GameKit
+import iAd
 
 enum Side {
     case Left, Right
@@ -41,10 +42,21 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     
     // code is run when the class is loaded
     func didLoadFromCCB(){
+//        iAdHandler.sharedInstance.loadAds(bannerPosition: .Top)
+        //        iAdHandler.sharedInstance.displayBannerAd()
+        
         setUpGameCenter()
         gamePhysicsNode.collisionDelegate = self
         animationManager.runAnimationsForSequenceNamed("MainMenu")
 //        gamePhysicsNode.debugDraw = true
+    }
+    
+    override func onEnter() {
+        super.onEnter()
+        iAdHandler.sharedInstance.loadAds(bannerPosition: .Top)
+//        iAdHandler.sharedInstance.displayBannerAd()
+//        iAdHandler.sharedInstance.loadInterstitialAd()
+        
     }
     
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
@@ -99,6 +111,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         } else {
             animationManager.runAnimationsForSequenceNamed("ToGameplay")
         }
+        iAdHandler.sharedInstance.displayBannerAd()
     }
     
     func home() {
@@ -144,11 +157,12 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         var highscore = defaults.integerForKey("highscore")
         if score > highscore {
             defaults.setInteger(score, forKey: "highscore")
-            reportHighScoreToGameCenter()
+//            reportHighScoreToGameCenter()
         }
         
         // set high score
         var newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscore")
+        reportHighScoreToGameCenter()
         bestScore.string = "\(newHighscore)"
         gameOverScoreLabel.string = "\(score)"
         

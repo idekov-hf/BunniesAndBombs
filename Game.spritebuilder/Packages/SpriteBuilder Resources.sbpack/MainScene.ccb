@@ -10,13 +10,13 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>301</integer>
+	<integer>302</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>3</integer>
+	<integer>14</integer>
 	<key>docDimensionsType</key>
 	<integer>0</integer>
 	<key>fileType</key>
@@ -420,7 +420,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.12943606078624725</real>
+							<real>0.13289380073547363</real>
 							<real>189.98587036132812</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -503,8 +503,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -2073,7 +2071,7 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<real>0.080686025321483612</real>
+							<real>0.084143765270709991</real>
 							<real>100.73320007324219</real>
 						</array>
 						<key>name</key>
@@ -2082,7 +2080,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.080686025321483612</real>
+							<real>0.084143765270709991</real>
 							<real>100.73320007324219</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -2292,7 +2290,7 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<real>0.17637757956981659</real>
+							<real>0.16651067137718201</real>
 							<real>96.000007629394531</real>
 						</array>
 						<key>name</key>
@@ -2301,7 +2299,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.17637757956981659</real>
+							<real>0.16651067137718201</real>
 							<real>96.000007629394531</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -2511,8 +2509,8 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<real>0.27005434036254883</real>
-							<real>89.359466552734375</real>
+							<real>0.25499445199966431</real>
+							<real>90.633674621582031</real>
 						</array>
 						<key>name</key>
 						<string>position</string>
@@ -2520,8 +2518,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.27005434036254883</real>
-							<real>89.359466552734375</real>
+							<real>0.25499445199966431</real>
+							<real>90.633674621582031</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -2734,7 +2732,7 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<real>0.92968195676803589</real>
+							<real>0.91702276468276978</real>
 							<real>100.34452056884766</real>
 						</array>
 						<key>name</key>
@@ -2743,7 +2741,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.92968195676803589</real>
+							<real>0.91702276468276978</real>
 							<real>100.34452056884766</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -3176,8 +3174,8 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<real>0.73381650447845459</real>
-							<real>89.433677673339844</real>
+							<real>0.74828404188156128</real>
+							<real>90.128120422363281</real>
 						</array>
 						<key>name</key>
 						<string>position</string>
@@ -3185,8 +3183,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.73381650447845459</real>
-							<real>89.433677673339844</real>
+							<real>0.74828404188156128</real>
+							<real>90.128120422363281</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -4922,7 +4920,7 @@
 								<key>value</key>
 								<array>
 									<real>0.5</real>
-									<real>0.59154927730560303</real>
+									<real>0.52056336402893066</real>
 									<integer>0</integer>
 									<integer>2</integer>
 									<integer>2</integer>
@@ -4981,7 +4979,7 @@ Bombs
 								<string>FloatScale</string>
 								<key>value</key>
 								<array>
-									<real>60</real>
+									<real>55</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -5132,7 +5130,7 @@ Bombs
 								<key>value</key>
 								<array>
 									<real>0.5</real>
-									<real>0.40845069289207458</real>
+									<real>0.3653520941734314</real>
 									<integer>0</integer>
 									<integer>2</integer>
 									<integer>2</integer>
@@ -5459,11 +5457,11 @@ Bombs
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.15624998509883881</real>
-									<real>271.66143798828125</real>
+									<real>0.15000000596046448</real>
+									<real>0.37999999523162842</real>
 									<integer>0</integer>
 									<integer>2</integer>
-									<integer>0</integer>
+									<integer>2</integer>
 								</array>
 							</dict>
 							<dict>
@@ -5484,8 +5482,8 @@ Bombs
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.20000000298023224</real>
-									<real>0.20000000298023224</real>
+									<real>0.10147841274738312</real>
+									<real>0.10147841274738312</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -5508,8 +5506,8 @@ Bombs
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>256</real>
-									<real>256</real>
+									<real>512</real>
+									<real>512</real>
 									<integer>0</integer>
 									<integer>0</integer>
 								</array>
@@ -5554,7 +5552,7 @@ Bombs
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>assets/infoButtonSmall.png</string>
+									<string>assets/infoButton.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -5785,11 +5783,11 @@ Bombs
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.85835075378417969</real>
-									<real>271.66143798828125</real>
+									<real>0.85000002384185791</real>
+									<real>0.37999999523162842</real>
 									<integer>0</integer>
 									<integer>2</integer>
-									<integer>0</integer>
+									<integer>2</integer>
 								</array>
 							</dict>
 							<dict>
@@ -6111,7 +6109,7 @@ Bombs
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>568</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -6518,7 +6516,7 @@ Bombs
 								<key>value</key>
 								<array>
 									<real>0.5</real>
-									<real>0.85915493965148926</real>
+									<real>0.76895958185195923</real>
 									<integer>0</integer>
 									<integer>2</integer>
 									<integer>2</integer>
@@ -6726,7 +6724,7 @@ Over</string>
 								<key>value</key>
 								<array>
 									<real>0.44999998807907104</real>
-									<real>0.69014084339141846</real>
+									<real>0.62283283472061157</real>
 									<integer>0</integer>
 									<integer>2</integer>
 									<integer>2</integer>
@@ -6938,7 +6936,7 @@ Over</string>
 								<key>value</key>
 								<array>
 									<real>0.57241731882095337</real>
-									<real>0.69014084339141846</real>
+									<real>0.62283086776733398</real>
 									<integer>0</integer>
 									<integer>2</integer>
 									<integer>2</integer>
@@ -7181,7 +7179,7 @@ Over</string>
 								<key>value</key>
 								<array>
 									<real>0.44999998807907104</real>
-									<real>0.61971831321716309</real>
+									<real>0.56297367811203003</real>
 									<integer>0</integer>
 									<integer>2</integer>
 									<integer>2</integer>
@@ -7395,7 +7393,7 @@ Over</string>
 								<key>value</key>
 								<array>
 									<real>0.57241731882095337</real>
-									<real>0.61971831321716309</real>
+									<real>0.56297367811203003</real>
 									<integer>0</integer>
 									<integer>2</integer>
 									<integer>2</integer>
@@ -7610,7 +7608,7 @@ Over</string>
 								<key>value</key>
 								<array>
 									<real>0.5</real>
-									<real>0.47887325286865234</real>
+									<real>0.44579789042472839</real>
 									<integer>0</integer>
 									<integer>2</integer>
 									<integer>2</integer>
@@ -7938,7 +7936,7 @@ Over</string>
 								<key>value</key>
 								<array>
 									<real>0.5</real>
-									<real>0.47887325286865234</real>
+									<real>0.44579789042472839</real>
 									<integer>0</integer>
 									<integer>2</integer>
 									<integer>2</integer>
@@ -8144,8 +8142,8 @@ Over</string>
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.15551201999187469</real>
-									<real>0.85915493965148926</real>
+									<real>0.1450953483581543</real>
+									<real>0.76895958185195923</real>
 									<integer>0</integer>
 									<integer>2</integer>
 									<integer>2</integer>
@@ -8542,7 +8540,7 @@ Over</string>
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>0.66666668653488159</real>
+										<real>0.80000001192092896</real>
 										<real>0.26408451795578003</real>
 									</array>
 								</dict>
@@ -8560,7 +8558,7 @@ Over</string>
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>0.91666668653488159</real>
+										<real>1.1499999761581421</real>
 										<real>0.26408451795578003</real>
 									</array>
 								</dict>
@@ -10474,10 +10472,10 @@ Over</string>
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>160</real>
+									<real>0.5</real>
 									<real>467.41909790039062</real>
 									<integer>0</integer>
-									<integer>0</integer>
+									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -10682,10 +10680,10 @@ Iavor Dekov</string>
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>160</real>
+									<real>0.5</real>
 									<real>405.40682983398438</real>
 									<integer>0</integer>
-									<integer>0</integer>
+									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -10890,10 +10888,10 @@ Make School Summer Academy 2015</string>
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>160</real>
-									<real>299.400146484375</real>
+									<real>0.5</real>
+									<real>291.06680297851562</real>
 									<integer>0</integer>
-									<integer>0</integer>
+									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -10930,11 +10928,12 @@ Make School Summer Academy 2015</string>
 								<array>
 									<string>Special thanks to:
 Jorrie Brettin and Luke Solomon
-for all their help and knowledge 
-throughout the development process.
+for their patience all their help 
+and knowledge throughout the 
+development process.
 
-And thanks to all my friends that helped
-me make design choices.</string>
+And thank you to everyone that 
+helped me make design choices.</string>
 									<false/>
 								</array>
 							</dict>
@@ -11310,10 +11309,10 @@ me make design choices.</string>
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>48.999954223632812</real>
-									<real>525.00006103515625</real>
+									<real>0.85000002384185791</real>
+									<real>170.40000915527344</real>
 									<integer>0</integer>
-									<integer>0</integer>
+									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -11636,7 +11635,7 @@ me make design choices.</string>
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>568</real>
+							<real>0.0</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -12285,7 +12284,7 @@ me make design choices.</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.13333334028720856</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -12446,7 +12445,7 @@ me make design choices.</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.66666668653488159</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

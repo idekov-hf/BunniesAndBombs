@@ -15,6 +15,7 @@
 		5DA081E21B7E6063005505BF /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA081E11B7E6063005505BF /* GameKit.framework */; };
 		5DA081E41B7E63B5005505BF /* GameCenterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA081E31B7E63B5005505BF /* GameCenterInteractor.swift */; };
 		5DA081E61B7E7941005505BF /* iAdHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA081E51B7E7941005505BF /* iAdHandler.swift */; };
+		5DE7A8CD1B7F36E200EC314C /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE7A8CC1B7F36E200EC314C /* iAd.framework */; };
 		5DF034351B506B3B00EB3E32 /* Bomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF034341B506B3A00EB3E32 /* Bomb.swift */; };
 		5DF0343B1B506C5200EB3E32 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0343A1B506C5200EB3E32 /* Character.swift */; };
 		7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A046D7519E84C36004C4763 /* MainScene.swift */; };
@@ -171,6 +172,7 @@
 		5DA081E11B7E6063005505BF /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		5DA081E31B7E63B5005505BF /* GameCenterInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterInteractor.swift; sourceTree = "<group>"; };
 		5DA081E51B7E7941005505BF /* iAdHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iAdHandler.swift; sourceTree = "<group>"; };
+		5DE7A8CC1B7F36E200EC314C /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		5DF034341B506B3A00EB3E32 /* Bomb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bomb.swift; path = Source/Bomb.swift; sourceTree = "<group>"; };
 		5DF0343A1B506C5200EB3E32 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Character.swift; path = Source/Character.swift; sourceTree = "<group>"; };
 		7A046D7519E84C36004C4763 /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainScene.swift; path = Source/MainScene.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DE7A8CD1B7F36E200EC314C /* iAd.framework in Frameworks */,
 				5DA081E21B7E6063005505BF /* GameKit.framework in Frameworks */,
 				7A97911819E631CD001FFC4D /* libcocos2d.a in Frameworks */,
 				8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */,
@@ -509,6 +512,7 @@
 		B77F1B3017B978D7009739AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5DE7A8CC1B7F36E200EC314C /* iAd.framework */,
 				5DA081E11B7E6063005505BF /* GameKit.framework */,
 				BC5399D31A44DCC90063F482 /* AndroidKit.framework */,
 				BC5399D41A44DCC90063F482 /* CoreJava.framework */,
