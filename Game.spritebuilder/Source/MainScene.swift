@@ -28,13 +28,13 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     var score: Int = 0 {
         didSet {
             scoreLabel.string = "\(score)"
-            if score % 5 == 0 && scrollSpeed < 350 {
+            if score % 5 == 0 && scrollSpeed < 400 {
                 scrollSpeed += 10
             }
         }
     }
     var fallInterval: Double = 0.5
-    var scrollSpeed: CGFloat = 140
+    var scrollSpeed: CGFloat = 150
     var bunnyWasHit: Bool = false
     var tutorial: Bool = true
     var gameOver: Bool = false
@@ -42,21 +42,10 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     
     // code is run when the class is loaded
     func didLoadFromCCB(){
-//        iAdHandler.sharedInstance.loadAds(bannerPosition: .Top)
-        //        iAdHandler.sharedInstance.displayBannerAd()
-        
         setUpGameCenter()
+        iAdHandler.sharedInstance.loadAds(bannerPosition: .Top)
         gamePhysicsNode.collisionDelegate = self
         animationManager.runAnimationsForSequenceNamed("MainMenu")
-//        gamePhysicsNode.debugDraw = true
-    }
-    
-    override func onEnter() {
-        super.onEnter()
-        iAdHandler.sharedInstance.loadAds(bannerPosition: .Top)
-//        iAdHandler.sharedInstance.displayBannerAd()
-//        iAdHandler.sharedInstance.loadInterstitialAd()
-        
     }
     
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
