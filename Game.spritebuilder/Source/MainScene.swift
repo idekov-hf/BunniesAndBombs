@@ -43,7 +43,6 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     // code is run when the class is loaded
     func didLoadFromCCB(){
         setUpGameCenter()
-        iAdHandler.sharedInstance.loadAds(bannerPosition: .Top)
         gamePhysicsNode.collisionDelegate = self
         animationManager.runAnimationsForSequenceNamed("MainMenu")
     }
@@ -100,7 +99,6 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         } else {
             animationManager.runAnimationsForSequenceNamed("ToGameplay")
         }
-        iAdHandler.sharedInstance.displayBannerAd()
     }
     
     func home() {
@@ -143,14 +141,14 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     func loadGameOverScene() {
         // highscore code
         let defaults = NSUserDefaults.standardUserDefaults()
-        var highscore = defaults.integerForKey("highscore")
+        let highscore = defaults.integerForKey("highscore")
         if score > highscore {
             defaults.setInteger(score, forKey: "highscore")
 //            reportHighScoreToGameCenter()
         }
         
         // set high score
-        var newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscore")
+        let newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscore")
         reportHighScoreToGameCenter()
         bestScore.string = "\(newHighscore)"
         gameOverScoreLabel.string = "\(score)"
@@ -175,7 +173,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
         character.animationManager.runAnimationsForSequenceNamed("Punch\(side)")
         
         var enemyXPos = spriteArray[0].position.x
-        var enemyYPos = spriteArray[0].position.y
+        let enemyYPos = spriteArray[0].position.y
         
         if enemyYPos <= 200 && enemyYPos >= 128 && spriteArray[0].spawnSide == side && spriteArray[0].hasBeenSwiped == false {
             if spriteArray[0].spriteType == "Bomb" {
@@ -197,7 +195,7 @@ class MainScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     func spawnNewEnemy() {
-        var randVar  = arc4random_uniform(8)
+        let randVar  = arc4random_uniform(8)
         if randVar == 5 {
             let newBunny = CCBReader.load("Bunny", owner: self) as! Bunny
             newBunny.position.y = spriteArray.last!.position.y + CGFloat(96)
@@ -241,9 +239,9 @@ func reportHighScoreToGameCenter(){
     scoreReporter.value = Int64(NSUserDefaults.standardUserDefaults().integerForKey("highscore"))
     var scoreArray: [GKScore] = [scoreReporter]
     
-    GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError!) -> Void in
+    GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError?) -> Void in
         if error != nil {
-            println("Game Center: Score Submission Error")
+            print("Game Center: Score Submission Error")
         }
     })
     
@@ -253,8 +251,8 @@ func reportHighScoreToGameCenter(){
 extension MainScene: GKGameCenterControllerDelegate {
 
     func showLeaderboard() {
-        var viewController = CCDirector.sharedDirector().parentViewController!
-        var gameCenterViewController = GKGameCenterViewController()
+        let viewController = CCDirector.sharedDirector().parentViewController!
+        let gameCenterViewController = GKGameCenterViewController()
         gameCenterViewController.gameCenterDelegate = self
         viewController.presentViewController(gameCenterViewController, animated: true, completion: nil)
     }

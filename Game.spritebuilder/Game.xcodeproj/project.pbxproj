@@ -14,7 +14,6 @@
 		5D957F951B6FF4D200118F8A /* FallingSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D957F941B6FF4D200118F8A /* FallingSprite.swift */; };
 		5DA081E21B7E6063005505BF /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA081E11B7E6063005505BF /* GameKit.framework */; };
 		5DA081E41B7E63B5005505BF /* GameCenterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA081E31B7E63B5005505BF /* GameCenterInteractor.swift */; };
-		5DA081E61B7E7941005505BF /* iAdHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA081E51B7E7941005505BF /* iAdHandler.swift */; };
 		5DE7A8CD1B7F36E200EC314C /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE7A8CC1B7F36E200EC314C /* iAd.framework */; };
 		5DF034351B506B3B00EB3E32 /* Bomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF034341B506B3A00EB3E32 /* Bomb.swift */; };
 		5DF0343B1B506C5200EB3E32 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0343A1B506C5200EB3E32 /* Character.swift */; };
@@ -171,7 +170,6 @@
 		5D957F941B6FF4D200118F8A /* FallingSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FallingSprite.swift; sourceTree = "<group>"; };
 		5DA081E11B7E6063005505BF /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		5DA081E31B7E63B5005505BF /* GameCenterInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterInteractor.swift; sourceTree = "<group>"; };
-		5DA081E51B7E7941005505BF /* iAdHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iAdHandler.swift; sourceTree = "<group>"; };
 		5DE7A8CC1B7F36E200EC314C /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		5DF034341B506B3A00EB3E32 /* Bomb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bomb.swift; path = Source/Bomb.swift; sourceTree = "<group>"; };
 		5DF0343A1B506C5200EB3E32 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Character.swift; path = Source/Character.swift; sourceTree = "<group>"; };
@@ -460,7 +458,6 @@
 				5D957F941B6FF4D200118F8A /* FallingSprite.swift */,
 				5D957F901B6FF06200118F8A /* Bunny.swift */,
 				5DF034341B506B3A00EB3E32 /* Bomb.swift */,
-				5DA081E51B7E7941005505BF /* iAdHandler.swift */,
 				D352B48019EC608A00829775 /* MetalShaders */,
 			);
 			name = Source;
@@ -638,6 +635,7 @@
 					};
 					B77F1B2D17B978D7009739AE = {
 						DevelopmentTeam = 9KQ77A48PB;
+						LastSwiftMigration = 0810;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 0;
@@ -843,7 +841,6 @@
 			files = (
 				5D957F951B6FF4D200118F8A /* FallingSprite.swift in Sources */,
 				5DF034351B506B3B00EB3E32 /* Bomb.swift in Sources */,
-				5DA081E61B7E7941005505BF /* iAdHandler.swift in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				5DA081E41B7E63B5005505BF /* GameCenterInteractor.swift in Sources */,
 				5DF0343B1B506C5200EB3E32 /* Character.swift in Sources */,
@@ -1159,6 +1156,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1193,6 +1191,7 @@
 				PRODUCT_NAME = Game;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
